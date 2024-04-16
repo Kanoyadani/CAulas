@@ -15,7 +15,7 @@ void inicia(no *P){ //Iniciando uma lista
 };
 
 
-
+//Insere inicio
 no* insereInicio (no *P){
 	no *novo = (no*) malloc(sizeof(no));
     printf("Informe o valor:");
@@ -33,6 +33,33 @@ no* insereInicio (no *P){
 }
 
 
+void InsereFinal (no *P){
+	
+	no * novo = (no*) malloc(sizeof(no));
+    
+	
+    
+	    printf("Informe o valor:");
+	     scanf("%d",&novo ->info);	
+	     novo -> prox = NULL;
+       
+       if(P == NULL){
+       	
+  	    P = novo;
+  	    
+       }else{
+          no * T = P;  
+    	 while(T -> prox != NULL){ 
+    	
+    		T = T -> prox;
+    		
+		}
+    	 T -> prox = novo;
+	  }
+	  
+}
+
+//Exibe
 void exibe (no* P) {
 	no * T = P;
 	
@@ -55,30 +82,28 @@ void exibe (no* P) {
     
     do{
     	system("cls");
-    	printf("Menu de Opcoes");
-    	printf("1 - Insira um valor noInicio da lista");
-    	printf("2 - Insira um valor no Final da Lista");
-    	printf("3 - Exisibir lista");
-    	printf("4 - Sair"); 
+    	printf("Menu de Opcoes\n");
+    	printf("1 - Insira um valor noInicio da lista\n");
+    	printf("2 - Insira um valor no Final da Lista\n");
+    	printf("3 - Exisibir lista\n");
+    	printf("4 - Sair\n"); 
     	
     	scanf("%d",&menu);
       switch(menu){
 	  
       case 1 : P = insereInicio(P);
               break;
-      case 2 : printf("testes");
+      case 2 : InsereFinal(P);
       	      break;
-      case 3 : exibi(P);
+      case 3 : exibe(P);
 	          break;
       case 4 : printf("Finalizando PRogrmana");
               break;
-      default printf("Valor invalido");
+      default: printf("Valor invalido");
 	  system("pause");
       }
 	}while (menu != 4);
 	
-	
-        
 	
 	free(P);
 	P = NULL;
