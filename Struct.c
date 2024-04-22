@@ -59,6 +59,15 @@ void InsereFinal (no *P){
 	  
 }
 
+//Retira Inicio
+/*no* retirainicio(no *P){
+	no* T  = P;
+	P  = T -> prox;
+	free(T);
+	return P;
+}*/
+
+
 //Exibe
 void exibe (no* P) {
 	no * T = P;
@@ -83,10 +92,14 @@ void exibe (no* P) {
     do{
     	system("cls");
     	printf("Menu de Opcoes\n");
-    	printf("1 - Insira um valor noInicio da lista\n");
+    	printf("1 - Insira um valor no Inicio da lista\n");
     	printf("2 - Insira um valor no Final da Lista\n");
-    	printf("3 - Exisibir lista\n");
-    	printf("4 - Sair\n"); 
+    	printf("3 - Insira um valor no Meio da Lista\n");
+    	printf("4 - Retira um valor no Inicio da lista\n");
+    	printf("5 - Retirar um valor no Final da Lista\n");
+    	printf("6 - Retirar um valor no Meio da Lista\n");
+    	printf("7 - Exisibir lista\n");
+    	printf("8 - Sair\n"); 
     	
     	scanf("%d",&menu);
       switch(menu){
@@ -95,14 +108,22 @@ void exibe (no* P) {
               break;
       case 2 : InsereFinal(P);
       	      break;
-      case 3 : exibe(P);
+      case 3 : insereMeio(P);
 	          break;
-      case 4 : printf("Finalizando PRogrmana");
+      case 4 : //P = retirainicio(P);
               break;
+      case 5: retirafim(P);
+	          break;        
+	  case 6: retirameio(P);
+	          break;
+	  case 7: exibe(P); 
+	          break;
+	  case8: printf("Finalizando PRogrmana");
+	          break ;              
       default: printf("Valor invalido");
 	  system("pause");
       }
-	}while (menu != 4);
+	}while (menu != 8);
 	
 	
 	free(P);
