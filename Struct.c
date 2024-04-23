@@ -59,13 +59,80 @@ void InsereFinal (no *P){
 	  
 }
 
+void insereMeio(no *P){
+	no * novo = (no*) malloc(sizeof(no));
+    no* T = P; 
+    printf("Informe o valor:");
+	scanf("%d",&novo ->info);	
+	
+	int valor;
+	printf("Aonde deve ser inserido\n");
+	scanf("%d",&valor);
+	
+	do{
+	  
+	  T = T -> prox;
+	  
+	}while(T->info != valor);
+	
+	novo -> prox =T;
+}
+
 //Retira Inicio
-/*no* retirainicio(no *P){
+no* retirainicio(no *P){
 	no* T  = P;
 	P  = T -> prox;
 	free(T);
+	exibe(P); 
 	return P;
-}*/
+}
+
+
+//Retira Final
+no* retirafim(no *P){
+	no* T = P; 
+	no* ANT = NULL;
+	
+	do{
+	  ANT = T;
+	  	
+	  T = T -> prox;
+
+	}while(T->prox != NULL);
+	
+	
+	ANT-> prox = NULL;
+	
+	free(T);
+	exibe(P); 
+	return P;
+}
+
+no* retirameio(no *P){
+	no* T = P; 
+	no* ANT = NULL;
+	int valor;
+	exibe(P); 
+	printf("Qual valor deve ser removido\n");
+	scanf("%d",&valor);
+	
+	do{
+	  
+	  ANT = T;
+	  	
+	  T = T -> prox;
+	  
+	  
+
+	}while(T->info != valor);
+	
+	ANT ->prox = T -> prox;
+	T-> prox = NULL;
+	
+	free(T);
+	exibe(P); 
+	return P;
+}
 
 
 //Exibe
@@ -98,7 +165,7 @@ void exibe (no* P) {
     	printf("4 - Retira um valor no Inicio da lista\n");
     	printf("5 - Retirar um valor no Final da Lista\n");
     	printf("6 - Retirar um valor no Meio da Lista\n");
-    	printf("7 - Exisibir lista\n");
+    	printf("7 - Exibir lista\n");
     	printf("8 - Sair\n"); 
     	
     	scanf("%d",&menu);
@@ -110,15 +177,15 @@ void exibe (no* P) {
       	      break;
       case 3 : insereMeio(P);
 	          break;
-      case 4 : //P = retirainicio(P);
+      case 4 : P = retirainicio(P);
               break;
-      case 5: retirafim(P);
+      case 5: P = retirafim(P);
 	          break;        
-	  case 6: retirameio(P);
+	  case 6: P = retirameio(P);
 	          break;
 	  case 7: exibe(P); 
 	          break;
-	  case8: printf("Finalizando PRogrmana");
+	  case8: printf("Finalizando Progrmana");
 	          break ;              
       default: printf("Valor invalido");
 	  system("pause");
