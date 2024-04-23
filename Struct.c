@@ -8,11 +8,24 @@ struct st_no{
 
 typedef struct st_no no; 
 
-
-void inicia(no *P){ //Iniciando uma lista
+//Iniciando uma lista
+void inicia(no *P){ 
     P -> info = 0 ;
     P -> prox = NULL;	
 };
+
+
+//Exibe
+void exibe (no* P) {
+	no * T = P;
+	
+	do{
+		printf("  %d  ", T -> info);
+		T = T-> prox;
+	}while(T != NULL);
+	printf("\n\n");
+	system("pause");
+}
 
 
 //Insere inicio
@@ -32,8 +45,8 @@ no* insereInicio (no *P){
 	return P;
 }
 
-
-void InsereFinal (no *P){
+//Insere Final
+void InsereFinal (no *P){ 
 	
 	no * novo = (no*) malloc(sizeof(no));
     
@@ -58,7 +71,7 @@ void InsereFinal (no *P){
 	  }
 	  
 }
-
+//Insere Meio
 void insereMeio(no *P){
 	no * novo = (no*) malloc(sizeof(no));
     no* T = P; 
@@ -75,7 +88,8 @@ void insereMeio(no *P){
 	  
 	}while(T->info != valor);
 	
-	novo -> prox =T;
+	novo -> prox = T -> prox;
+	T ->prox = novo;
 }
 
 //Retira Inicio
@@ -108,6 +122,7 @@ no* retirafim(no *P){
 	return P;
 }
 
+//Retira Meio
 no* retirameio(no *P){
 	no* T = P; 
 	no* ANT = NULL;
@@ -135,19 +150,9 @@ no* retirameio(no *P){
 }
 
 
-//Exibe
-void exibe (no* P) {
-	no * T = P;
-	
-	do{
-		printf("  %d  ", T -> info);
-		T = T-> prox;
-	}while(T != NULL);
-	printf("\n\n");
-	system("pause");
-}
 
 
+//Main
  int main(){
  	int menu;
  	no* P = (no*) malloc(sizeof(no));  //ALoca na memoria um ponteiro para uma estrutura no
