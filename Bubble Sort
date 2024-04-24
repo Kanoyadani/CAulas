@@ -1,0 +1,47 @@
+#include <stdio.h>
+#include <stdbool.h>
+
+// Função de ordenação usando Bubble Sort com while loop
+void bubbleSort(int arr[], int n) {
+    bool trocou = true;
+    int i = 0, temp;
+    
+    while (trocou) {
+        trocou = false;
+        
+        for (int j = 0; j < n-i-1; j++) {
+            if (arr[j] > arr[j+1]) {
+                // Troca os elementos se estiverem fora de ordem
+                temp = arr[j];
+                arr[j] = arr[j+1];
+                arr[j+1] = temp;
+                trocou = true;
+            }
+        }
+        
+        i++;
+    }
+}
+
+// Função para imprimir o array ordenado
+void printArray(int arr[], int size) {
+    for (int i = 0; i < size; i++) {
+        printf("%d\n", arr[i]);
+    }
+    printf("\n");
+}
+
+int main() {
+    int participantes[] = {135, 42, 789, 23, 567};
+    int n = sizeof(participantes)/sizeof(participantes[0]);
+    
+    printf("Array original:\n");
+    printArray(participantes, n);
+    
+    bubbleSort(participantes, n);
+    
+    printf("Array ordenado:\n");
+    printArray(participantes, n);
+    
+    return 0;
+}
