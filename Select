@@ -1,0 +1,48 @@
+#include<stdio.h>
+
+void select_sort(int vetor[], int tamanho){
+	
+	int i, j, menor , troca;
+	
+	for(i = 0 ; i < (tamanho - 1); i++){
+		
+		menor = i;
+		
+		printf("%d\n", menor);
+		
+		for(j = (i+1); j < tamanho; j++){
+			if(vetor[j] < vetor[menor]){
+				menor = j;
+			}
+		}
+		
+		if(i != menor){
+			troca = vetor[i];
+			vetor[i] = vetor[menor];
+			vetor[menor] = troca;
+		}
+	}
+}
+
+int main(){
+	
+	int vet[6] = {7 , 5, 13, 3, 15, 10};
+	
+	
+	printf("vetor desordenado \n");
+	
+	int i;
+	
+	for(i = 0; i < 6; i++ ){
+		
+		printf("%d\n" , vet[i]);
+		
+	}
+	
+	
+	select_sort(vet, 6);
+	
+	
+	
+	return 0;
+}
